@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | La Última Librería</title>
+    <!--<link rel="stylesheet" href="estilo_catalogo.css">-->
+    <link rel="stylesheet" href="estilo_ibooks.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header-opac">
+      <!--
+    <p class="txt-titulo">La Última Librería</p>
+    <p class="txt-precio">Instagram: librerialaultima</p>
+    <p class="txt-titulo">WhatsApp: 922 136 1042</p>
+    <br/><br/>
+                    -->
+    <div class="brand-container">
+        <h1>La Última Librería</h1>
+        <p class="tagline">Instagram: librerialaultima</p>
+        <p class="tagline">WhatsApp: 922 136 1042</p>
+    </div>
+    <br/>
+
+
+    <div class="controles">
+        <!-- El ID 'buscador' es vital para el JS -->
+        <input type="text" id="buscador" placeholder="Buscar título o autor..." onkeyup="aplicarFiltros()">
+        
+        <!-- El ID 'filtro-genero' es vital para el JS -->
+        <select id="filtro-genero" onchange="aplicarFiltros()">
+            <option value="">Todos los géneros</option>
+            <option value="Terror">Terror</option>
+            <option value="Ciencia Ficción">Ciencia Ficción</option>
+            <option value="Policiaca">Policiaca</option>
+        </select>
+    </div>
+</header>
+
+<main class="contenedor-principal">
+    <div id="grid-libros" class="grid-libros"></div>
+</main>
+
+
+<!-- Modal de Detalles -->
+<div id="modal-detalle" class="modal" onclick="cerrarModal()">
+    <div class="modal-contenido" onclick="event.stopPropagation()">
+        <span class="boton-cerrar" onclick="cerrarModal()">&times;</span>
+        <div id="contenido-dinamico-modal">
+            <!-- El JS llenará esto -->
+        </div>
+    </div>
+</div>
+
+<!-- El script debe ir al final -->
+<script src="controlador_catalogo.js"></script>
+</body>
+</html>
