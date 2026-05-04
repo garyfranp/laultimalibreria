@@ -6,11 +6,11 @@
     --linea-estante: rgba(181, 137, 81, 0.3); /* Café tenue */
     --color-texto: #4a3728;
     --apple-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --border-subtle: rgba(0,0,0,0.1);
 }
 
 body {
     background-color: var(--bg-madera);
-    /* Efecto de vetas de madera sutiles */
     background-image: repeating-linear-gradient(
         90deg,
         transparent,
@@ -22,22 +22,54 @@ body {
     font-family: 'SF Pro Display', 'Segoe UI', sans-serif;
 }
 
+/* --- SECCIÓN DE BUSQUEDA CORREGIDA PARA MÓVIL --- */
+.header-opac {
+    padding: 40px 20px 20px;
+    text-align: center;
+    font-family: var(--apple-font);
+}
+
+.controles {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que bajen si no caben */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#buscador, #filtro-genero {
+    font-family: var(--apple-font);
+    font-size: 16px; /* 16px evita zoom automático en iPhone */
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    background: #fff;
+    color: #1d1d1f;
+    outline: none;
+    box-sizing: border-box; /* IMPORTANTE: evita que el padding ensanche el input */
+}
+
+#buscador { width: 100%; max-width: 300px; }
+#filtro-genero { width: auto; min-width: 150px; }
+
+/* --- GRID Y REPIZAS --- */
 .grid-libros {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 60px 40px; 
-    padding: 80px 20px;
-    
-    /* Ajustamos la línea para que quede justo al borde inferior del marco (220px) */
+    padding: 40px 20px;
     background-image: linear-gradient(
         to bottom,
-        transparent 280px,           /* Espacio antes de la línea */
+        transparent 280px,
         var(--linea-estante) 305px, 
         var(--linea-estante) 285px, 
         transparent 281px
     );
-    background-size: 100% 380px; /* Sincronizado con la altura de la tarjeta */
+    background-size: 100% 380px;
     background-attachment: local;
 }
 
@@ -47,21 +79,19 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    z-index: 5; /* Asegura que la tarjeta esté sobre el fondo */
+    z-index: 5;
+    transition: transform 0.3s ease;
 }
 
-.libro-card:hover {
-    transform: translateY(-10px);
-}
+.libro-card:hover { transform: translateY(-10px); }
 
-/* MARCO RÍGIDO (BLINDADO) */
 .marco-foto {
     width: 150px;
     height: 220px;
     position: relative;
-    background-color: #fff; /* CRITICO: Esto tapa la línea que pasa por atrás */
+    background-color: #fff;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    z-index: 10; /* Refuerza la prioridad visual */
+    z-index: 10;
     overflow: hidden;
 }
 
@@ -72,341 +102,90 @@ body {
     display: block;
 }
 
-/* LOMO REALISTA */
-.marco-foto::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 10px;
-    background: linear-gradient(to right, 
-        rgba(0,0,0,0.15) 0%, 
-        transparent 100%);
-    z-index: 2;
-}
-
-.datos-libro {
-    margin-top: 15px;
-    text-align: center;
-}
-
-.txt-titulo {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-texto);
-    margin: 0;
-    /* Evita que títulos largos rompan el diseño */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.txt-precio {
-    font-size: 15px;
-    color: #8b0000; /* Rojo editorial */
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-
-/* ETIQUETA */
-.etiqueta {
-    position: absolute;
-    top: 10px; left: 0;
-    padding: 4px 10px;
-    font-size: 10px;
-    font-weight: bold;
-    color: white;
-    text-transform: uppercase;
-    z-index: 20;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-}
-.dispo { background: #2e7d32; }
-.apartado { background: #d32f2f; }
-
-
-
-
-
-
-/* DATOS DEBAJO DE LA REPISA */
-.datos-libro {
-    margin-top: 55px; /* Para que aparezcan debajo de la madera */
-    text-align: center;
-}
-.txt-titulo {
-    font-size: 13px;
-    font-weight: bold;
-    margin: 0;
-    color: #4a3728;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.txt-precio {
-    font-size: 14px;
-    color: #8b0000;
-    font-weight: bold;
-    margin: 2px 0;
-}
-
-
-/* Fondo del modal */
+/* --- MODAL OPTIMIZADO PARA MÓVIL --- */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 2000;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Inicia desde arriba para permitir scroll */
+    overflow-y: auto; /* Permite scroll si el modal es largo */
+    padding: 20px 0;
 }
 
-/* Caja blanca del contenido */
 .modal-contenido {
     background-color: #f9f4ef;
-    padding: 30px;
-    border-radius: 8px;
+    padding: 25px;
+    border-radius: 15px;
     width: 90%;
     max-width: 700px;
     position: relative;
+    margin: auto; /* Centra horizontalmente */
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 .boton-cerrar {
     position: absolute;
-    top: 15px; right: 20px;
-    font-size: 28px; cursor: pointer;
+    top: 10px; right: 15px;
+    font-size: 32px; 
+    cursor: pointer;
     color: #4a3728;
+    z-index: 2100;
+    line-height: 1;
 }
 
-/* Diseño interno del modal */
+/* Ajustes internos del modal */
 .detalle-layout {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
+.detalle-img { width: 100%; text-align: center; }
 .detalle-img img {
-    width: 200px;
+    max-width: 180px;
     height: auto;
-    border-radius: 4px;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
 }
 
-.detalle-info {
-    flex: 1;
-    min-width: 250px;
+.detalle-info { flex: 1; min-width: 100%; }
+
+/* --- MEDIA QUERIES (AJUSTES FINALES MÓVIL) --- */
+@media (max-width: 600px) {
+    .header-opac h1 { font-size: 24px; }
+    
+    .controles {
+        flex-direction: column; /* Buscador arriba, Genero abajo */
+        padding: 0 10px;
+    }
+    
+    #buscador, #filtro-genero {
+        width: 100%; /* Ocupan todo el ancho disponible */
+        max-width: none;
+    }
+
+    .modal-contenido {
+        padding: 40px 20px 20px; /* Espacio extra arriba para la X */
+    }
+
+    .detalle-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ficha-tecnica {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+    }
 }
 
-.detalle-info h2 { margin-top: 0; color: #2c1e14; }
-
-.genero-tag {
-    background: #dcb382;
-    padding: 3px 8px;
-    font-size: 11px;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-.precio-modal {
-    font-size: 24px;
-    color: #8b0000;
-    font-weight: bold;
-    margin: 15px 0;
-}
-
-.descripcion-modal {
-    line-height: 1.6;
-    color: #555;
-    font-style: italic;
-}
-
-.btn-interes {
-    background-color: #2e7d32;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.ficha-tecnica {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide la info técnica en dos columnas */
-    gap: 5px;
-    font-size: 13px;
-    background: #f0ede5;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.tags-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.status-tag {
-    padding: 3px 8px;
-    font-size: 11px;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-}
-
-.st-dispo { background: #2e7d32; }
-.st-apart { background: #d32f2f; }
-
-.descripcion-seccion h4, .especificaciones-seccion h4 {
-    margin-bottom: 5px;
-    border-bottom: 1px solid #dcb382;
-    color: #4a3728;
-}
-
-.estado-ejemplar {
-    background: #fff;
-    border-left: 4px solid #dcb382;
-    padding: 15px;
-    margin: 10px 0;
-    font-size: 14px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-}
-
-.comentarios-vendedor {
-    margin-top: 10px;
-    font-style: italic;
-    color: #5d4037;
-    line-height: 1.4;
-}
-
-.badge-popular {
-    display: block;
-    text-align: center;
-    background: #ff9800;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 5px;
-    margin-top: 10px;
-    border-radius: 4px;
-}
-
-.ficha-tecnica li {
-    padding: 4px 0;
-    border-bottom: 1px dashed #ccc;
-}
-
-
-.metrica-valor {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #fdf6e3;
-    border: 1px solid #dcb382;
-    border-radius: 4px;
-    text-align: center;
-    color: #4a3728;
-}
-
-.metrica-valor small {
-    display: block;
-    text-transform: uppercase;
-    font-size: 9px;
-    letter-spacing: 1px;
-    margin-bottom: 3px;
-}
-
-.metrica-valor p {
-    margin: 0;
-    font-size: 16px;
-}
-
-
-
-/* estilo para los controles s     --------------------------- */
-.header-opac {
-    padding: 60px 20px 30px;;
-    text-align: center;
-    font-family: var(--apple-font);
-}
-
-.header-opac h1 {
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: #1d1d1f;
-    margin-bottom: 25px;
-}
-
-/* Contenedor de controles */
-.controles {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-}
-
-/* ESTILO PARA EL BUSCADOR Y EL DROP LIST */
-#buscador, #filtro-genero {
-    font-family: var(--apple-font);
-    font-size: 15px;
-    padding: 12px 20px;
-    border-radius: 12px; /* Redondeado suave tipo iOS */
-    border: 1px solid var(--border-subtle);
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px); /* Efecto cristal */
-    color: #1d1d1f;
-    outline: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-/* Efecto de foco (Focus) */
-#buscador:focus, #filtro-genero:focus {
-    border-color: var(--apple-blue);
-    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
-    background: #fff;
-}
-
-/* Personalización del Selector (Drop List) */
-#filtro-genero {
-    appearance: none; /* Quita el estilo por defecto */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%231d1d1f' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    padding-right: 40px;
-    cursor: pointer;
-}
-
-/* Ancho específico para el buscador */
-#buscador {
-    width: 300px;
-}
-
-
-.brand-container {
-    margin-bottom: 25px; /* Controla la distancia exacta entre el título y los buscadores */
-}
-
-.brand-container h1 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #1d1d1f;
-    margin: 0; /* ELIMINA EL ESPACIO POR DEFECTO */
-    letter-spacing: -0.8px; /* Look de Apple: letras un poco más juntas */
-}
-
-.tagline {
-    font-size: 14px;
-    color: #86868b; /* Gris sutil tipo Apple */
-    margin: 4px 0 0; /* Solo 4px de separación con el h1 */
-    font-weight: 400;
-    /*text-transform: uppercase;*/
-    letter-spacing: 1px;
-}
+/* Conservar el resto de tus estilos de etiquetas y badges... */
+.etiqueta { position: absolute; top: 10px; left: 0; padding: 4px 10px; font-size: 10px; font-weight: bold; color: white; text-transform: uppercase; z-index: 20; }
+.dispo { background: #2e7d32; }
+.apartado { background: #d32f2f; }
+.datos-libro { margin-top: 55px; text-align: center; }
+.txt-titulo { font-size: 13px; font-weight: bold; margin: 0; color: #4a3728; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.txt-precio { font-size: 14px; color: #8b0000; font-weight: bold; margin: 2px 0; }
