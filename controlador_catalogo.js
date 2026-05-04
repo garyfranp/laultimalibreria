@@ -94,6 +94,7 @@ function abrirModal(libro) {
     // Construimos la sección de "Estado del Ejemplar" (del JSON anidado)
     const fichaDetallada = `
         <div class="estado-ejemplar">
+            <p><strong>Condición:</strong> ${infoExtra.condicion || 'N/A'}</p>
             <p><strong>Año:</strong> ${infoExtra.anio || 'N/A'}</p>
             <p><strong>Importado:</strong> ${infoExtra.importado ? '⭐ Sí' : 'No'}</p>
             <p><strong>Pasta:</strong> ${infoExtra.pasta || 'N/A'}</p>
