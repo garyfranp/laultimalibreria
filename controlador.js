@@ -451,6 +451,7 @@ async function enviarFichaASupabase(datosLibro) {
                     pasta: datosLibro.pasta,
                     sobrecubierta: datosLibro.sobrecubierta,
                     edicion: datosLibro.edicion,
+                    condicion: datosLibro.condicion,
                     importado: datosLibro.importado,
                     raro: datosLibro.raro,
                     popular: datosLibro.popular,
