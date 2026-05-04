@@ -168,6 +168,7 @@ body {
         max-width: none;
     }
     .btn-interes {
+        background-color: #1b5e20 !important;
         width: 100% !important; /* Asegura que ocupe todo el ancho del modal */
         padding: 16px !important; /* Más alto para que sea fácil de tocar con el pulgar */
         font-size: 16px !important; /* Texto más legible */
