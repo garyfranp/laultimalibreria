@@ -167,9 +167,18 @@ body {
         width: 100%; /* Ocupan todo el ancho disponible */
         max-width: none;
     }
-
+    .btn-interes {
+        width: 100% !important; /* Asegura que ocupe todo el ancho del modal */
+        padding: 16px !important; /* Más alto para que sea fácil de tocar con el pulgar */
+        font-size: 16px !important; /* Texto más legible */
+        margin-top: 25px !important;
+        border-radius: 12px !important; /* Bordes más redondeados tipo iOS */
+        display: block;
+        box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3); /* Sombra para que resalte sobre el fondo crema */
+    }
     .modal-contenido {
         padding: 40px 20px 20px; /* Espacio extra arriba para la X */
+        padding-bottom: 40px; 
     }
 
     .detalle-layout {
