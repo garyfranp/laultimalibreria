@@ -148,5 +148,5 @@ function cerrarModal() {
 
 function contactarVendedor(titulo) {
     const mensaje = `Hola, me interesa el libro: ${titulo}`;
-    window.open(`https://wa.me/TUNUMERO?text=${encodeURIComponent(mensaje)}`, '_blank');
+    window.open(`https://wa.me/529221361042?text=${encodeURIComponent(mensaje)}`, '_blank');
 }
