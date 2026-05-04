@@ -1,0 +1,45 @@
+:root { --p: #1a1a1a; --s: #27ae60; --err: #c0392b; --bg: #f0f0f0; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); margin: 0; padding: 0; transition: all 0.3s; }
+        #viewport { display: grid; grid-template-columns: 380px 1fr; gap: 20px; padding: 20px; }
+        
+        .card { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px; border: 1px solid #ddd; }
+        h3 { margin-top: 0; font-size: 0.85rem; text-transform: uppercase; border-left: 5px solid var(--p); padding-left: 10px; }
+        
+        .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; font-family: inherit; }
+        .btn { padding: 12px; border: none; border-radius: 6px; font-weight: bold; width: 100%; cursor: pointer; text-transform: uppercase; margin-top: 10px; font-family: inherit; }
+        .btn-p { background: var(--p); color: white; }
+        .btn-s { background: var(--s); color: white; }
+        
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+        .stat-card { background: white; padding: 12px; border-radius: 10px; text-align: center; border: 1.5px solid var(--p); }
+        .stat-card small { display: block; font-size: 0.6rem; text-transform: uppercase; color: #666; }
+        .stat-card b { font-size: 1.1rem; }
+
+        .multiplicadores { background: #fff5f5; padding: 10px; border-radius: 8px; border: 1px solid #ffdada; margin: 10px 0; }
+        .scroll-area { overflow-x: auto; background: white; border: 1px solid #eee; border-radius: 8px; max-height: 450px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 600px; }
+        th { background: #f8f8f8; padding: 12px; text-align: left; position: sticky; top: 0; z-index: 10; border-bottom: 2px solid #ddd; }
+        td { padding: 10px; border-bottom: 1px solid #eee; }
+        
+        .badge { font-size: 0.65rem; padding: 2px 5px; background: #eee; border-radius: 3px; font-weight: bold; margin-right: 3px; }
+        .pre-view { background: #fdfdfd; border: 2px dashed var(--p); padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px; }
+
+        /* iPhone View Emulator */
+        .iphone-view { display: block !important; width: 375px !important; margin: 30px auto !important; border: 12px solid #1a1a1a; border-radius: 30px; height: 750px; overflow-y: auto; padding: 10px !important; background: var(--bg); }
+
+
+.dot-flashing {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--s);
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0.3; transform: scale(0.8); }
+}
