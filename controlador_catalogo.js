@@ -147,6 +147,6 @@ function cerrarModal() {
 }
 
 function contactarVendedor(titulo) {
-    const mensaje = `Hola, me interesa el libro: ${titulo}`;
-    window.open(`https://wa.me/529221361042?text=${encodeURIComponent(mensaje)}`, '_blank');
+    const mensaje = `Hola, me interesa el libro: ${titulo}`; 
+    window.open(`https://wa.me/529221361042/?text=${encodeURIComponent(mensaje)}`, '_blank');
 }
