@@ -411,6 +411,93 @@ body {
 }
 
 
+/* ======================================================
+   CAPA DE ADAPTABILIDAD PARA MÓVIL 
+   (Pegar al final del archivo para no romper el original)
+   ====================================================== */
+
+@media (max-width: 600px) {
+    /* 1. Ajuste de los controles de búsqueda */
+    .header-opac {
+        padding: 40px 15px 20px;
+    }
+
+    .controles {
+        flex-direction: column; /* Apila el buscador y el filtro */
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    #buscador, #filtro-genero {
+        width: 100% !important; /* Ocupan todo el ancho disponible */
+        box-sizing: border-box; /* Evita que el padding los ensanche */
+        font-size: 16px; /* Evita zoom automático en iPhone */
+    }
+
+    /* 2. Ajuste de la Repisa (Grid) */
+    .grid-libros {
+        padding: 40px 10px;
+        gap: 80px 20px; /* Más espacio vertical para que no choquen los datos con la madera */
+    }
+
+    /* 3. Ajuste del Modal (Contenedor Crítico) */
+    .modal {
+        align-items: flex-start; /* Permite scroll desde el inicio */
+        padding: 20px 0;
+        overflow-y: auto;
+    }
+
+    .modal-contenido {
+        width: 85%;
+        padding: 45px 20px 25px; /* Espacio para la X de cerrar */
+        margin: auto;
+    }
+
+    .boton-cerrar {
+        top: 10px;
+        right: 15px;
+        font-size: 35px; /* Más grande para que sea fácil de cerrar */
+    }
+
+    /* 4. Diseño interno del libro en el modal */
+    .detalle-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .detalle-img img {
+        width: 160px; /* Tamaño optimizado para pantalla vertical */
+    }
+
+    .detalle-info {
+        min-width: 100%;
+        text-align: center;
+    }
+
+    .ficha-tecnica {
+        grid-template-columns: 1fr; /* Una sola columna para que sea legible */
+        text-align: left;
+    }
+
+    /* 5. EL BOTÓN "ME INTERESA" (Optimizado) */
+    .btn-interes {
+        width: 100% !important;
+        padding: 18px !important; /* Más alto para facilitar el toque */
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        background-color: #1b5e20 !important; /* Verde oscuro vibrante */
+        color: #ffffff !important;
+        border-radius: 12px !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+        margin-top: 25px;
+        display: block;
+    }
+}
+
 
 
 
