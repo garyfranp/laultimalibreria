@@ -350,6 +350,9 @@ async function guardarEnInventario() {
     // 1. Validación básica
     if(!temp.titulo) return alert("Falta título");
 
+    let precio_final_editado = document.getElementById('vSugeridoInput').value,
+    temp.sugerido = precio_final_editado;
+    
     const loader = document.getElementById('loadingStatus');
     const loadText = document.getElementById('loadingText');
     const btnGuardar = document.querySelector("button[onclick='guardarEnInventario()']");
