@@ -100,7 +100,7 @@ function abrirModal(libro) {
             <p><strong>Pasta:</strong> ${infoExtra.pasta || 'N/A'}</p>
             <p><strong>Sobrecubierta:</strong> ${infoExtra.sobrecubierta ? 'Sí' : 'No'}</p>
             <p><strong>Edición:</strong> ${infoExtra.edicion || 'N/A'}</p>
-            <p><strong>Raro:</strong> ${infoExtra.raro ? '⭐ Sí' : 'No'}</p>
+            <p><strong>Raro:</strong> ${infoExtra.raro ? ' Sí' : 'No'}</p>
             <p class="comentarios-vendedor">
                 <strong>Notas del librero:</strong><br>
                 ${infoExtra.comentarios || 'Sin comentarios adicionales.'}
@@ -113,6 +113,8 @@ function abrirModal(libro) {
             <div class="detalle-img">
                 <img src="${libro.foto_url}" alt="${libro.titulo}">
                 ${infoExtra.popular ? '<span class="badge-popular">🔥 Popular</span>' : ''}
+                ${infoExtra.raro ? '<span class="badge-popular">💎 Raro</span>' : ''}
+                ${infoExtra.importado ? '<span class="badge-popular">✈️ Importado</span>' : ''}
                 <div class="metrica-valor">
                     <small>Valor de lectura:</small>
                     <p><strong>$${precioPorPagina}</strong> / página</p>
